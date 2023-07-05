@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAP-COLOR-GUI</title>
+    <script type="module" crossorigin src="./assets/index-340cb134.js"></script>
+    <link rel="stylesheet" href="./assets/index-b615f417.css">
+  </head>
+  <body>
+    <div id="app" class="map-color"></div>
+    <div id="control">
+      <p style="color: aqua;">(拖动滑块)</p>
+      <div class="controlContainer">
+        <input type="range" min="-300" max="300" value="50" id="contrast">
+        <p>对比度：<span id="demo-contrast"></span></p>
+
+        <input type="range" min="-300" max="300" value="50" id="brightness">
+        <p>亮度：<span id="demo-brightness"></span></p>
+
+        <input type="range" min="-600" max="600" value="50" id="saturate">
+        <p>饱和度：<span id="demo-saturate"></span></p>
+
+        <input type="range" min="-100" max="100" value="50" id="sepia">
+        <p>棕色：<span id="demo-sepia"></span></p>
+
+        <input type="range" min="-100" max="100" value="50" id="invert">
+        <p>负片invert：<span id="demo-invert"></span></p>
+
+        <input type="range" min="0" max="360" value="360" id="hue">
+        <p>色调hue-rotate：<span id="demo-hue"></span></p>
+      </div>
+
+
+    </div>
+    
+  </body>
+</html>
