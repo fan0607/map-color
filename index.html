@@ -37,10 +37,56 @@
         <p>不透明度级别：<span id="demo-opacity"></span></p>
         <input type="range" min="0" max="360" value="0" id="blur">
         <p>模糊：<span id="demo-blur"></span></p>
+        上传图片：<input type="file" id="file" onchange="changeImg()" name="file" />
+        保存图片：<button id="save" onclick="save()">保存</button>
       </div>
 
 
     </div>
+    <script>
+    function changeImg() {
+      var file = document.getElementById("file");
+
+      //获取图片的src
+      var imgSrc = window.URL.createObjectURL(file.files[0]);
+      console.log('imgSrc: ', imgSrc);
+      document.getElementById("app").style.backgroundImage = "url(" + imgSrc + ")";
+
+    }
+  </script>
+  <script>
+    function save() {
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        var img = new Image();
+        img.onload = function() {
+            // 设置画布大小为图片大小
+            canvas.width = this.width;
+            canvas.height = this.height;
     
+            // 绘制图片到画布
+            ctx.drawImage(img, 0, 0);
+    
+            // 应用 CSS 滤镜效果（需要从实际应用的滤镜中获取）
+            var filter = getComputedStyle(document.getElementById('app')).filter;
+            ctx.filter = filter;
+    
+            // 重新绘制图片以应用滤镜
+            ctx.drawImage(img, 0, 0);
+    
+            // 转换画布内容为图片
+            var dataURL = canvas.toDataURL('image/png');
+    
+            // 创建下载链接并触发下载
+            var link = document.createElement('a');
+            link.href = dataURL;
+            link.download = 'filtered-image.png';
+            link.click();
+        };
+        var file = document.getElementById("file").files[0];
+        var imgSrc = window.URL.createObjectURL(file);
+        img.src = imgSrc;
+    }
+    </script>
   </body>
 </html>
